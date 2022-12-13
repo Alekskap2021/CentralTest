@@ -25,18 +25,13 @@ const ItemsList = () => {
     return () => clearInterval(interval);
   }, [watcher]);
 
-  const dateFormatter = (date) => {
-    const newDate = new Date(date);
-    return `${newDate.getDate()}.${newDate.getMonth() + 1}.${newDate.getFullYear()}`;
-  };
-
   const renderItemsList = (arr) => {
     const list = arr.map(({ id, dateOfSend, forecastEnd }) => {
       return (
         <li key={id}>
-          <p>{dateFormatter(dateOfSend)}</p>
+          <p>{dateOfSend}</p>
           <p>
-            {dateFormatter(dateOfSend)} - {dateFormatter(forecastEnd)}
+            {dateOfSend} - {forecastEnd}
           </p>
           <button className="fa-solid fa-trash" onClick={() => deleteItem(id)}></button>
         </li>
