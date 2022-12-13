@@ -1,0 +1,55 @@
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+form input {
+  position: relative;
+  padding: 5px 10px;
+  margin-right: 30px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  outline: transparent;
+}
+form input[disabled] {
+  opacity: 0.5;
+}
+form input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  color: transparent;
+  background: transparent;
+}
+
+label {
+  display: flex;
+  align-items: center;
+}
+label span {
+  font-size: 14px;
+  margin-right: 10px;
+}
+label span.hidden {
+  opacity: 0.5;
+}
+
+form button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #419152;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+form button:hover {
+  background-color: #3b814a;
+  color: rgb(232, 231, 231);
+}
