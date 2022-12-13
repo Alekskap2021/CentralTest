@@ -1,29 +1,17 @@
-import { useContext, useState } from "react";
-import { v4 as uuid } from "uuid";
-import ItemsContext from "../context/ItemsContext";
+import { useState } from "react";
+import usePlannerService from "../../services/usePlannerService";
 
 import "./addItemForm.css";
 
 const AddItemForm = () => {
   const [date, setDate] = useState("");
   const [dateRange, setDateRange] = useState("");
-  const { items, setItems } = useContext(ItemsContext);
-
-  const dateFormatter = (date) => {
-    const newDate = new Date(date);
-    return `${newDate.getDate()}.${newDate.getMonth() + 1}.${newDate.getFullYear()}`;
-  };
+  const { addItem } = usePlannerService();
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    const newItem = {
-      id: uuid(),
-      date: dateFormatter(date),
-      dateRange: dateFormatter(dateRange),
-    };
-
-    setItems([...items, newItem]);
+    addItem(date, dateRange);
 
     setDate("");
     setDateRange("");
