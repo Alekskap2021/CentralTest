@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/CentralTest/static/css/main.64d39b99.css",
-    "main.js": "/CentralTest/static/js/main.b1f7449b.js",
+    "main.js": "/CentralTest/static/js/main.c8afbfbd.js",
     "index.html": "/CentralTest/index.html",
     "main.64d39b99.css.map": "/CentralTest/static/css/main.64d39b99.css.map",
-    "main.b1f7449b.js.map": "/CentralTest/static/js/main.b1f7449b.js.map"
+    "main.c8afbfbd.js.map": "/CentralTest/static/js/main.c8afbfbd.js.map"
   },
   "entrypoints": [
     "static/css/main.64d39b99.css",
-    "static/js/main.b1f7449b.js"
+    "static/js/main.c8afbfbd.js"
   ]
 }
