@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import ItemsContext from "../../context/ItemsContext";
 import usePlannerService from "../../services/usePlannerService";
 
 import "./addItemForm.css";
@@ -6,7 +7,8 @@ import "./addItemForm.css";
 const AddItemForm = () => {
   const [date, setDate] = useState("");
   const [dateRange, setDateRange] = useState("");
-  const { addItem } = usePlannerService();
+  const { setItems } = useContext(ItemsContext);
+  const { addItem } = usePlannerService(setItems);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();

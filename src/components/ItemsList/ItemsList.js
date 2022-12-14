@@ -1,29 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import ItemsContext from "../../context/ItemsContext";
 import usePlannerService from "../../services/usePlannerService";
 
 import "./itemsList.css";
 
 const ItemsList = () => {
-  const [loading, setLoading] = useState(false);
-  const [itemsList, setItemsList] = useState([]);
-  const [watcher, setWatcher] = useState(0);
-  const { getAllItems, deleteItem } = usePlannerService();
-
-  useEffect(() => {
-    setLoading(true);
-
-    getAllItems().then((res) => {
-      setItemsList(res);
-      setLoading(false);
-    });
-
-    //custum watcher for detect a server changes
-    const interval = setInterval(() => {
-      getAllItems().then((res) => setWatcher(res.length));
-    }, 500);
-
-    return () => clearInterval(interval);
-  }, [watcher]);
+  const { items, setItems } = useContext(ItemsContext);
+  const { deleteItem } = usePlannerService(setItems);
 
   const renderItemsList = (arr) => {
     const list = arr.map(({ id, dateOfSend, forecastEnd }) => {
@@ -49,15 +32,8 @@ const ItemsList = () => {
     );
   };
 
-  const spinner = loading ? <p>Loading</p> : null;
-  const content =
-    !loading && itemsList.length ? renderItemsList(itemsList) : <p>Элементы не добавлены</p>;
-  return (
-    <>
-      {spinner}
-      {content}
-    </>
-  );
+  const content = items.length ? renderItemsList(items) : <p>Элементы не добавлены</p>;
+  return <>{content}</>;
 };
 
 export default ItemsList;
